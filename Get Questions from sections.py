@@ -78,4 +78,8 @@ sections = {
 112:'33.1 ', 113:'33.2 ', 114:'33.3 ',
 115:'34.1 ', 116:'34.2 ', 117:'34.3 ', 118:'34.4 '
 }
-print(section_to_page_number[sections[3]])
+
+def get_section_page(number):
+    return section_to_page_number[sections[number]]
+
+print(get_section_page(2))
