@@ -1,4 +1,7 @@
 import PyPDF2
+import re
+
+file_name = "Chapter-Questions"
 
 # Opens the correct file
 pdfFileObj = open('Econ Master Doc (1).pdf', 'rb')
@@ -79,7 +82,97 @@ sections = {
 115:'34.1 ', 116:'34.2 ', 117:'34.3 ', 118:'34.4 '
 }
 
+# Adds input1 and input 2 to file_name
+def add_to_txt(input, input2, file_name):
+    # Open the file in append & read mode ('a+')
+    with open(file_name + ".txt", "a+") as file_object:
+        # Move read cursor to the start of file.
+        file_object.seek(0)
+        # If file is not empty then append '\n'
+        data = file_object.read(100)
+        if len(data) > 0 :
+            file_object.write("\n")
+        # Append text at the end of file
+        file_object.write(input)
+        file_object.write("\t" + input2)
+
+def get_questions(question_end, output):
+    for i in range(1, question_end + 1): 
+        if i == 1:
+            Question = output.split(str(i + 1) + ")")[0]
+        else:
+            Question = str(i) + ")" +output.split(str(i) + ")")[1].split(str(i+1)+")")[0]
+        print("======================================== Question", i)
+        
+        # Get the question
+        Question1 = Question.split(str(i) + ")")[1].split("A)")[0].strip()
+        Question1 = ''.join(Question1.splitlines())
+        print(str(i) + ")" + Question1)
+
+        # Get option A
+        AnswerA = str("A) " + Question.split("A) ")[1].split("B) ")[0].strip())
+        AnswerA = ''.join(AnswerA.splitlines())
+        print(AnswerA)
+
+        # Get option B
+        AnswerB = str("B) " + Question.split("B) ")[1].split("C) ")[0].strip())
+        AnswerB= ''.join(AnswerB.splitlines())
+        print(AnswerB)
+
+        # Get option C
+        AnswerC = str("C) " + Question.split("C) ")[1].split("D) ")[0].strip())
+        AnswerC = ''.join(AnswerC.splitlines())
+        print(AnswerC)
+
+        # Get get option D
+        AnswerD = str("D) " + Question.split("D) ")[1].split("E) ")[0].strip())
+        AnswerD = ''.join(AnswerD.splitlines())
+        print(AnswerD)
+
+        # Get get option E
+        AnswerE = str("E) " + Question.split("E) ")[1].split("Answer: ")[0].strip())
+        AnswerE = ''.join(AnswerE.splitlines())
+        print(AnswerE)
+
+        # Get the correct answer
+        Correct_Answer = Question.split("Answer:")[1].split("Diff")[0].strip()
+        Correct_Answer = ''.join(Correct_Answer.splitlines())
+        print("Correct answer is:", str(Correct_Answer))
+
+        # Get the correct answer ad the option
+        if Correct_Answer == "A":
+            Answer_text = AnswerA
+        elif Correct_Answer == "B":
+            Answer_text = AnswerB
+        elif Correct_Answer == "C":
+            Answer_text = AnswerC
+        elif Correct_Answer == "D":
+            Answer_text = AnswerD
+        elif Correct_Answer == "E":
+            Answer_text = AnswerE
+        Answer_text = ''.join(Answer_text.splitlines())
+        print(Answer_text)
+        add_to_txt(str(Question1 + AnswerA + AnswerB + AnswerC + AnswerD + AnswerE).strip(), "\t" + Answer_text, file_name)
+
+def get_pages(start, end):
+    output = ""
+    for i in range(start, end + 1):
+        output = str(output) + str(pdfReader.getPage(i).extractText())#.replace("2017 Pearson Education, Inc.", ""))
+        output = re.sub(r"\d+Copyright\s.\s+\s*2017 Pearson Education, Inc\.", "", output, flags=re.MULTILINE)
+    return output
+
 def get_section_page(number):
     return section_to_page_number[sections[number]]
 
-print(get_section_page(2))
+active_section = 1
+def scrape_section():
+    section_start = get_section_page(active_section)
+    section_end = get_section_page(active_section + 1)
+    output = get_pages(section_start, section_end)
+    questions = get_questions(90, output)
+    #add_to_txt(str(questions), "", file_name)
+    #print(output)
+    #add_to_txt(output, "", file_name)
+
+
+scrape_section()
