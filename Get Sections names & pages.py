@@ -155,7 +155,6 @@ def get_section_pages(sections, restricted_output):
     pages = {}
     for i in sections:
         pages[i] = int(restricted_output.split(str(i))[1].split("PAGE NUMBER:")[1].split(" *")[0].strip())
-        #print(pages)
     return pages
 
 
