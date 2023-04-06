@@ -176,14 +176,14 @@ def return_section_pages(chapter_to_get):
     restricted_output = remove_questions(output)
 
     add_to_txt(output, "", file_name)
-
+    
     return get_section_pages(sections_in_chapter(chapter_to_get, restricted_output), restricted_output)
+
 
     
 
-for i in range(1, 34):
+for i in range(1, 35):
     print((return_section_pages(i)))
-
 
 #chapter_to_get = int(input("Input the chapter you want: "))
 #print(return_section_pages(chapter_to_get))
