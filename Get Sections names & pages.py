@@ -127,10 +127,6 @@ def remove_questions(text):
     filtered_lines = [line for line in text.split('\n') if ')' not in line and 'Topic: ' not in line and 'Learning Obj.:' not in line]
     return'\n'.join(filtered_lines)
 
-    #filtered_lines = [line for line in text.split('\n') if ')' not in line]
-    #result = '\n'.join(filtered_lines)
-    #return result
-
 # Return true if a section is in the chapter and false otherwise
 def check_if_in_section(section_to_check, restricted_output):
     if str(section_to_check) in restricted_output:
@@ -157,11 +153,7 @@ def get_section_pages(sections, restricted_output):
         pages[i] = int(restricted_output.split(str(i))[1].split("PAGE NUMBER:")[1].split(" *")[0].strip())
     return pages
 
-
 def return_section_pages(chapter_to_get):
-    # Prompts the user to input the chapter they want
-    #chapter_to_get = int(input("Input the chapter you want: "))
-
     # The page the requested chapter starts on (The start for output)
     start_of_chapter = int(chapter_dictionary[chapter_to_get]-1)
 
@@ -178,11 +170,5 @@ def return_section_pages(chapter_to_get):
     
     return get_section_pages(sections_in_chapter(chapter_to_get, restricted_output), restricted_output)
 
-
-    
-
 for i in range(1, 35):
     print((return_section_pages(i)))
-
-#chapter_to_get = int(input("Input the chapter you want: "))
-#print(return_section_pages(chapter_to_get))
