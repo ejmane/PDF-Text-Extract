@@ -2,3 +2,4 @@
 *.txt
 test.py
 *.xlsx
+.gitignore
