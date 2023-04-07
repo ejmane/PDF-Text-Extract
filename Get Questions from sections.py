@@ -15,9 +15,9 @@ section_to_page_number = {
 '3.1 ': 180, '3.2 ': 214, '3.3 ': 229,
 '4.1 ': 286, '4.2 ': 346, '4.3 ': 357, '4.4 ': 369,
 '5.1 ': 395, '5.2 ': 438, '5.3 ': 449,
-'6.1 ': 473, '6.2 ': 506, '6.3 ': 523,
+'6.1 ': 473, '6.2 ': 506, '6.3 ': 523, '6A-1 ': 542, '6A-2 ': 547, '6A-3 ': 555, '6A-4 ':558, '6A-5 ': 565, 
 '7.1 ': 567, '7.2 ': 579, '7.3 ': 600, '7.4 ': 627,
-'8.1 ': 667, '8.2 ': 730,
+'8.1 ': 667, '8.2 ': 730, '8A-1 ': 739, '8A-2 ': 743,
 '9.1 ': 761, '9.2 ': 764, '9.3 ': 790, '9.4 ': 840,
 '10.1 ': 862, '10.2 ': 921, '10.3 ': 926,
 '11.1 ': 949, '11.2 ': 964, '11.3 ': 1001, '11.4 ': 1017,
@@ -43,7 +43,7 @@ section_to_page_number = {
 '31.1 ': 2640, '31.2 ': 2664, '31.3 ': 2697, '31.4 ': 2713,
 '32.1 ': 2722, '32.2 ': 2783,
 '33.1 ': 2811, '33.2 ': 2826, '33.3 ': 2879,
-'34.1 ': 2893, '34.2 ': 2919, '34.3 ': 2954, '34.4 ': 2975}
+'34.1 ': 2893, '34.2 ': 2919, '34.3 ': 2954, '34.4 ': 2975, '35 ': 2997}
 
 sections = {
 1:'1.1 ', 2:'1.2 ', 3:'1.3 ',
@@ -52,35 +52,35 @@ sections = {
 11:'4.1 ', 12:'4.2 ', 13:'4.3 ', 14:'4.4 ',
 15:'5.1 ', 16:'5.2 ', 17:'5.3 ',
 18:'6.1 ', 19:'6.2 ', 20:'6.3 ',
-21:'7.1 ', 22:'7.2 ', 23:'7.3 ', 24:'7.4 ',
-25:'8.1 ', 26:'8.2 ', 
-27:'9.1 ', 28:'9.2 ', 29:'9.3 ', 30:'9.4 ',
-31:'10.1 ', 32:'10.2 ', 33:'10.3 ',
-34:'11.1 ', 35:'11.2 ', 36:'11.3 ', 37:'11.4 ',
-38:'12.1 ', 39:'12.2 ', 40:'12.3 ',
-41:'13.1 ', 42:'13.2 ', 43:'13.3 ',
-44:'14.1 ', 45:'14.2 ', 46:'14.3 ',
-47:'15.1 ', 48:'15.2 ', 49:'15.3 ', 50:'15.4 ', 51:'15.5 ',
-52:'16.1 ', 53:'16.2 ', 54:'16.3 ', 55:'16.4 ', 56:'16.5 ',
-57:'17.1 ', 58:'17.2 ', 59:'17.3 ',
-60:'18.1 ', 61:'18.2 ', 62:'18.3 ', 63:'18.4 ',
-64:'19.1 ', 65:'19.2 ', 
-66:'20.1 ', 67:'20.2 ', 68:'20.3 ',
-69:'21.1 ', 70:'21.2 ', 71:'21.3 ', 
-72:'22.1 ',73:'22.2 ', 74:'22.3 ', 75:'22.4 ', 76:'22.5 ',
-77:'23.1 ', 78:'23.2 ', 79:'23.3 ',
-80:'24.1 ', 81:'24.2 ', 82:'24.3 ',
-83:'25.1 ', 84:'25.2 ', 85:'25.3 ', 86:'25.4 ',
-87:'26.1 ', 88:'26.2 ', 89:'26.3 ', 90:'26.4 ',
-91:'27.1 ', 92:'27.2 ', 93:'27.3 ', 94:'27.4 ',
-95:'28.1 ', 96:'28.2 ', 97:'28.3 ', 98:'28.4 ',
-99:'29.1 ', 100:'29.2 ', 101:'29.3 ',
-102:'30.1 ', 103:'30.2 ', 104:'30.3 ', 105:'30.4 ',
-106:'31.1 ', 107:'31.2 ', 108:'31.3 ', 109:'31.4 ',
-110:'32.1 ', 111:'32.2 ',
-112:'33.1 ', 113:'33.2 ', 114:'33.3 ',
-115:'34.1 ', 116:'34.2 ', 117:'34.3 ', 118:'34.4 '
-}
+21:'6A-1 ', 22:'6A-2 ', 23:'6A-3 ', 24:'6A-4 ', 25:'6A-5 ',
+26:'7.1 ',27:'7.2 ',28:'7.3 ',29:'7.4 ',
+30:'8.1 ',31:'8.2 ',32:'8A-1 ', 33:'8A-2 ',
+34:'9.1 ',35:'9.2 ',36:'9.3 ',37:'9.4 ',
+38:'10.1 ',39:'10.2 ',40:'10.3 ',
+41:'11.1 ',42:'11.2 ',43:'11.3 ',44:'11.4 ',
+45:'12.1 ',46:'12.2 ',47:'12.3 ',
+48:'13.1 ',49:'13.2 ',50:'13.3 ',
+51:'14.1 ',52:'14.2 ',53:'14.3 ',
+54:'15.1 ',55:'15.2 ',56:'15.3 ',57:'15.4 ',58:'15.5 ',
+59:'16.1 ',60:'16.2 ',61:'16.3 ',62:'16.4 ',63:'16.5 ',
+64:'17.1 ',65:'17.2 ',66:'17.3 ',
+67:'18.1 ',68:'18.2 ',69:'18.3 ',70:'18.4 ',
+71:'19.1 ',72:'19.2 ',
+73:'20.1 ',74:'20.2 ',75:'20.3 ',
+76:'21.1 ',77:'21.2 ',78:'21.3 ',
+79:'22.1 ',80:'22.2 ',81:'22.3 ',82:'22.4 ',83:'22.5 ',
+84:'23.1 ',85:'23.2 ',86:'23.3 ',
+87:'24.1 ',88:'24.2 ',89:'24.3 ',
+90:'25.1 ',91:'25.2 ',92:'25.3 ',93:'25.4 ',
+94:'26.1 ',95:'26.2 ',96:'26.3 ',97:'26.4 ',
+98:'27.1 ',99:'27.2 ',100:'27.3 ',101:'27.4 ',
+102:'28.1 ',103:'28.2 ',104:'28.3 ',105:'28.4 ',
+106:'29.1 ',107:'29.2 ',108:'29.3 ',
+109:'30.1 ',110:'30.2 ',111:'30.3 ',112:'30.4 ',
+113:'31.1 ',114:'31.2 ',115:'31.3 ',116:'31.4 ',
+117:'32.1 ',118:'32.2 ',
+119:'33.1 ',120:'33.2 ',121:'33.3 ',
+122:'34.1 ',123:'34.2 ',124:'34.3 ',125:'34.4 ', 126: '35 '}
 
 # Adds input1 and input 2 to file_name
 def add_to_txt(input, input2, file_name):
@@ -96,64 +96,6 @@ def add_to_txt(input, input2, file_name):
         file_object.write(input)
         file_object.write("\t" + input2)
 
-def get_questions(question_end, output):
-    for i in range(1, question_end + 1): 
-        if i == 1:
-            Question = output.split(str(i + 1) + ")")[0]
-        else:
-            Question = str(i) + ")" +output.split(str(i) + ")")[1].split(str(i+1)+")")[0]
-        print("======================================== Question", i)
-        
-        # Get the question
-        Question1 = Question.split(str(i) + ")")[1].split("A)")[0].strip()
-        Question1 = ''.join(Question1.splitlines())
-        print(str(i) + ")" + Question1)
-
-        # Get option A
-        AnswerA = str("A) " + Question.split("A) ")[1].split("B) ")[0].strip())
-        AnswerA = ''.join(AnswerA.splitlines())
-        print(AnswerA)
-
-        # Get option B
-        AnswerB = str("B) " + Question.split("B) ")[1].split("C) ")[0].strip())
-        AnswerB= ''.join(AnswerB.splitlines())
-        print(AnswerB)
-
-        # Get option C
-        AnswerC = str("C) " + Question.split("C) ")[1].split("D) ")[0].strip())
-        AnswerC = ''.join(AnswerC.splitlines())
-        print(AnswerC)
-
-        # Get get option D
-        AnswerD = str("D) " + Question.split("D) ")[1].split("E) ")[0].strip())
-        AnswerD = ''.join(AnswerD.splitlines())
-        print(AnswerD)
-
-        # Get get option E
-        AnswerE = str("E) " + Question.split("E) ")[1].split("Answer: ")[0].strip())
-        AnswerE = ''.join(AnswerE.splitlines())
-        print(AnswerE)
-
-        # Get the correct answer
-        Correct_Answer = Question.split("Answer:")[1].split("Diff")[0].strip()
-        Correct_Answer = ''.join(Correct_Answer.splitlines())
-        print("Correct answer is:", str(Correct_Answer))
-
-        # Get the correct answer ad the option
-        if Correct_Answer == "A":
-            Answer_text = AnswerA
-        elif Correct_Answer == "B":
-            Answer_text = AnswerB
-        elif Correct_Answer == "C":
-            Answer_text = AnswerC
-        elif Correct_Answer == "D":
-            Answer_text = AnswerD
-        elif Correct_Answer == "E":
-            Answer_text = AnswerE
-        Answer_text = ''.join(Answer_text.splitlines())
-        print(Answer_text)
-        add_to_txt(str(Question1 + AnswerA + AnswerB + AnswerC + AnswerD + AnswerE).strip(), "\t" + Answer_text, file_name)
-
 def get_pages(start, end):
     output = ""
     for i in range(start, end + 1):
@@ -164,15 +106,85 @@ def get_pages(start, end):
 def get_section_page(number):
     return section_to_page_number[sections[number]]
 
-active_section = 1
-def scrape_section():
+def question_count(output):
+    filtered_lines = [line for line in output.split('\n') if ' A) ' not in line and ' B) ' not in line and ' C) ' not in line and ' D) ' not in line and ' E) ' not in line and 'Answer: ' not in line and 'Diff' not in line]
+    output = '\n'.join(filtered_lines)
+    i = 1
+    while(True):
+        if str(str(i) + ")") in output:
+            i += 1
+        else:
+            return i-1
+
+def scrape_section(active_section):
     section_start = get_section_page(active_section)
+    #print("Section start: " + str(section_start))
     section_end = get_section_page(active_section + 1)
+    #print("Section end: " + str(section_end))
     output = get_pages(section_start, section_end)
-    questions = get_questions(90, output)
-    #add_to_txt(str(questions), "", file_name)
-    #print(output)
+    output = "1) " + output.split(sections[active_section], 1)[1].split("1) ", 1)[1]
+    if sections[active_section] == "22.1 ":
+        output = output.replace("Cthrough", "C) through")
     #add_to_txt(output, "", file_name)
+    question_list = output_to_list(output, question_count(output))
+    #add_to_txt(str(question_list[0]), "", file_name)
+    #for i in range(len(question_list)):
+    #    add_to_txt(str(question_list[i]), "", file_name)
+    output_questions(question_list, sections[active_section])
+
+def output_to_list(output, question_count):
+    questions = []
+    for i in range(question_count + 1):
+        questions.append(output.split("User2: ")[i])
+        #add_to_txt(output.split("User2: ")[i], "", file_name)
+    return questions
+
+def output_questions(questions, section):
+    for i in range(len(questions) - 1):
+        answer = {}
+        question = questions[i].split(str(i + 1) + ") ", 1)[1].split("A) ")[0]
+        question = ''.join(question.splitlines())
+        print(question)
+
+        answer["A"] = "A) " + questions[i].split("A) ", 1)[1].split("B) ", 1)[0]
+        answer["A"] = ''.join(answer["A"].splitlines())
+        print(answer["A"])
+
+        answer["B"] = "B) " + questions[i].split("B) ", 1)[1].split("C) ", 1)[0]
+        answer["B"] = ''.join(answer["B"].splitlines())
+        print(answer["B"])
+
+        answer["C"] = "C) " + questions[i].split("C) ", 1)[1].split("D) ", 1)[0]
+        answer["C"] = ''.join(answer["C"].splitlines())
+        print(answer["C"])
+
+        answer["D"] = "D) " + questions[i].split("D) ", 1)[1].split("E) ", 1)[0]
+        answer["D"] = ''.join(answer["D"].splitlines())
+        print(answer["D"])
+
+        try:
+            answer["E"] = "E) " + questions[i].split("E) ", 1)[1].split("Answer: ", 1)[0]
+            answer["E"] = ''.join(answer["E"].splitlines())
+            print(answer["E"])
+        except:
+            answer["E"] = ""
+            print("E) " + answer["E"])
+
+        correct_letter = str(questions[i].split("Answer: ", 1)[1].split("Diff: ", 1)[0]).strip()
+        correct_letter = ''.join(correct_letter.splitlines())
+        correct_letter = correct_letter[:1]
+        correct_answer = answer[correct_letter]
+        print("Correct Answer: " + correct_answer + "\n")
+        
+        add_to_txt(str(question + answer["A"] + answer["B"] + answer["C"] + answer["D"] + answer["E"]).strip(), "\t" + correct_answer + "\t" + section, file_name)
 
 
-scrape_section()
+
+
+
+#scrape_section(125)
+for i in range(1, len(sections)):
+    add_to_txt("\n" + "Section: " + str(sections[i]) + "\n", "", file_name)
+    scrape_section(i)
+
+#print(str(sections[2]))
