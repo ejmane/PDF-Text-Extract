@@ -9,6 +9,7 @@ pdfFileObj = open('Econ Master Doc (1).pdf', 'rb')
 # Reads the file
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 
+# Creates a dictionary of the page number for each section
 section_to_page_number = {
 '1.1 ': 1, '1.2 ': 63, '1.3 ': 77, 
 '2.1 ': 89, '2.2 ': 96, '2.3 ': 115, '2.4 ': 151,
@@ -45,6 +46,7 @@ section_to_page_number = {
 '33.1 ': 2811, '33.2 ': 2826, '33.3 ': 2879,
 '34.1 ': 2893, '34.2 ': 2919, '34.3 ': 2954, '34.4 ': 2975, '35 ': 2997}
 
+# Creates a dictionary of the index number and the sections so that it can be iterated through a for loop
 sections = {
 1:'1.1 ', 2:'1.2 ', 3:'1.3 ',
 4:'2.1 ', 5:'2.2 ', 6:'2.3 ', 7:'2.4 ',
@@ -96,72 +98,91 @@ def add_to_txt(input, input2, file_name):
         file_object.write(input)
         file_object.write("\t" + input2)
 
+# get_pages takes the start and end page numbers and outputs the text from those pages
 def get_pages(start, end):
     output = ""
     for i in range(start, end + 1):
-        output = str(output) + str(pdfReader.getPage(i).extractText())#.replace("2017 Pearson Education, Inc.", ""))
+        output = str(output) + str(pdfReader.getPage(i).extractText())
         output = re.sub(r"\d+Copyright\s.\s+\s*2017 Pearson Education, Inc\.", "", output, flags=re.MULTILINE)
     return output
 
+# Get section page takes the index number for the sections and outputs the section page numbers
 def get_section_page(number):
     return section_to_page_number[sections[number]]
 
+# Question count takes the output and counts the number of questions in the section (output)
 def question_count(output):
+    # Filters out the answers and extra part from questions
     filtered_lines = [line for line in output.split('\n') if ' A) ' not in line and ' B) ' not in line and ' C) ' not in line and ' D) ' not in line and ' E) ' not in line and 'Answer: ' not in line and 'Diff' not in line]
     output = '\n'.join(filtered_lines)
     i = 1
+    # Loops through the output and counts the number of questions
     while(True):
         if str(str(i) + ")") in output:
             i += 1
         else:
             return i-1
 
+# Scrape section takes the active section and scrapes the questions and answers
 def scrape_section(active_section):
+    # Get the start and end page numbers for the section
     section_start = get_section_page(active_section)
-    #print("Section start: " + str(section_start))
     section_end = get_section_page(active_section + 1)
-    #print("Section end: " + str(section_end))
+
+    # Sets the output to the text from the section
     output = get_pages(section_start, section_end)
+
+    # Removes spillover from previous section and ensures the first question is 1)
     output = "1) " + output.split(sections[active_section], 1)[1].split("1) ", 1)[1]
+
+    # Corrects error in spreadsheet
     if sections[active_section] == "22.1 ":
         output = output.replace("Cthrough", "C) through")
-    #add_to_txt(output, "", file_name)
+    
+    # Gets the list of questions
     question_list = output_to_list(output, question_count(output))
-    #add_to_txt(str(question_list[0]), "", file_name)
-    #for i in range(len(question_list)):
-    #    add_to_txt(str(question_list[i]), "", file_name)
+
+    # Outputs the questions to Chapter-questions.txt in the correct format
     output_questions(question_list, sections[active_section])
 
+# Output_to_list takes the output and question count and returns a list of questions
 def output_to_list(output, question_count):
     questions = []
+    # Splits the output into a list of questions
     for i in range(question_count + 1):
         questions.append(output.split("User2: ")[i])
-        #add_to_txt(output.split("User2: ")[i], "", file_name)
     return questions
 
+# output_questions takes the question, possible answers, correct answer, and adds prints them to Chapter-questions.txt
 def output_questions(questions, section):
     for i in range(len(questions) - 1):
         answer = {}
+        # Gets the question from questions[i] and prints it + stores it in question
         question = questions[i].split(str(i + 1) + ") ", 1)[1].split("A) ")[0]
         question = ''.join(question.splitlines())
         print(question)
 
+        # Gets the answer from questions[i] and prints it + stores it in answer["A"]
         answer["A"] = "A) " + questions[i].split("A) ", 1)[1].split("B) ", 1)[0]
         answer["A"] = ''.join(answer["A"].splitlines())
         print(answer["A"])
 
+        # Gets the answer from questions[i] and prints it + stores it in answer["B"]
         answer["B"] = "B) " + questions[i].split("B) ", 1)[1].split("C) ", 1)[0]
         answer["B"] = ''.join(answer["B"].splitlines())
         print(answer["B"])
 
+        # Gets the answer from questions[i] and prints it + stores it in answer["C"]
         answer["C"] = "C) " + questions[i].split("C) ", 1)[1].split("D) ", 1)[0]
         answer["C"] = ''.join(answer["C"].splitlines())
         print(answer["C"])
 
+        # Gets the answer from questions[i] and prints it + stores it in answer["D"]
         answer["D"] = "D) " + questions[i].split("D) ", 1)[1].split("E) ", 1)[0]
         answer["D"] = ''.join(answer["D"].splitlines())
         print(answer["D"])
 
+        # Gets the answer from questions[i] and prints it + stores it in answer["E"]
         try:
             answer["E"] = "E) " + questions[i].split("E) ", 1)[1].split("Answer: ", 1)[0]
             answer["E"] = ''.join(answer["E"].splitlines())
@@ -170,19 +191,17 @@ def output_questions(questions, section):
             answer["E"] = ""
             print("E) " + answer["E"])
 
+        # Gets the correct answer from questions[i] and prints it + stores it in correct_answer
         correct_letter = str(questions[i].split("Answer: ", 1)[1].split("Diff: ", 1)[0]).strip()
         correct_letter = ''.join(correct_letter.splitlines())
         correct_letter = correct_letter[:1]
         correct_answer = answer[correct_letter]
         print("Correct Answer: " + correct_answer + "\n")
         
+        # Adds the question, answers, and correct answer to Chapter-questions.txt
         add_to_txt(str(question + answer["A"] + answer["B"] + answer["C"] + answer["D"] + answer["E"]).strip(), "\t" + correct_answer + "\t" + section, file_name)
 
-
-
-
-
-#scrape_section(125)
+# Loops through the sections and scrapes the questions and answers
 for i in range(1, len(sections)):
     add_to_txt("\n" + "Section: " + str(sections[i]) + "\n", "", file_name)
     scrape_section(i)
