@@ -186,5 +186,3 @@ def output_questions(questions, section):
 for i in range(1, len(sections)):
     add_to_txt("\n" + "Section: " + str(sections[i]) + "\n", "", file_name)
     scrape_section(i)
-
-#print(str(sections[2]))
